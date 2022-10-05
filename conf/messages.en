@@ -58,3 +58,15 @@ unauthorised.heading = You can’t access this service with this account
 
 statutorySickPay.title = statutory-sick-pay-checklist-frontend
 statutorySickPay.heading = statutory-sick-pay-checklist-frontend
+
+whatIsYourName.title = whatIsYourName
+whatIsYourName.heading = whatIsYourName
+whatIsYourName.firstName = firstName
+whatIsYourName.secondName = secondName
+whatIsYourName.checkYourAnswersLabel = WhatIsYourName
+whatIsYourName.error.firstName.required = Enter firstName
+whatIsYourName.error.secondName.required = Enter secondName
+whatIsYourName.error.firstName.length = firstName must be 00 characters or less
+whatIsYourName.error.secondName.length = secondName must be 100 characters or less
+whatIsYourName.firstName.change.hidden = firstName
+whatIsYourName.secondName.change.hidden = secondName
