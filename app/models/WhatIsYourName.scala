@@ -14,19 +14,12 @@
  * limitations under the License.
  */
 
-package generators
+package models
 
-import models._
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.{Arbitrary, Gen}
+import play.api.libs.json._
 
-trait ModelGenerators {
+case class WhatIsYourName (firstName: String, secondName: String)
 
-  implicit lazy val arbitraryWhatIsYourName: Arbitrary[WhatIsYourName] =
-    Arbitrary {
-      for {
-        firstName <- arbitrary[String]
-        secondName <- arbitrary[String]
-      } yield WhatIsYourName(firstName, secondName)
-    }
+object WhatIsYourName {
+  implicit val format = Json.format[WhatIsYourName]
 }
