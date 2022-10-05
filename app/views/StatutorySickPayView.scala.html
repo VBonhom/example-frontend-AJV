@@ -24,4 +24,11 @@
 @layout(pageTitle = titleNoForm(messages("statutorySickPay.title"))) {
 
     <h1 class="govuk-heading-xl">@messages("statutorySickPay.heading")</h1>
+
+    <p class="govuk-body">
+        @govukButton(
+        ButtonViewModel(messages("site.start"))
+        .asLink(routes.IndexController.onPageLoad.url)
+        )
+    </p>
 }
