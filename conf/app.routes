@@ -26,3 +26,8 @@ GET        /whatIsYourName                        controllers.WhatIsYourNameCont
 POST       /whatIsYourName                        controllers.WhatIsYourNameController.onSubmit(mode: Mode = NormalMode)
 GET        /changeWhatIsYourName                  controllers.WhatIsYourNameController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeWhatIsYourName                  controllers.WhatIsYourNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /whatIsYourNINO                        controllers.WhatIsYourNINOController.onPageLoad(mode: Mode = NormalMode)
+POST       /whatIsYourNINO                        controllers.WhatIsYourNINOController.onSubmit(mode: Mode = NormalMode)
+GET        /changeWhatIsYourNINO                  controllers.WhatIsYourNINOController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeWhatIsYourNINO                  controllers.WhatIsYourNINOController.onSubmit(mode: Mode = CheckMode)
