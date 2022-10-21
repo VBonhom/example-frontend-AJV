@@ -14,19 +14,25 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import org.scalacheck.Arbitrary
-import pages._
+import java.time.{LocalDate, ZoneOffset}
 
-trait PageGenerators {
+import forms.behaviours.DateBehaviours
 
-  implicit lazy val arbitraryWhatIsYourDOBPage: Arbitrary[WhatIsYourDOBPage.type] =
-    Arbitrary(WhatIsYourDOBPage)
+class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
 
-  implicit lazy val arbitraryWhatIsYourNINOPage: Arbitrary[WhatIsYourNINOPage.type] =
-    Arbitrary(WhatIsYourNINOPage)
+  val form = new WhatIsYourDOBFormProvider()()
 
-  implicit lazy val arbitraryWhatIsYourNamePage: Arbitrary[WhatIsYourNamePage.type] =
-    Arbitrary(WhatIsYourNamePage)
+  ".value" - {
+
+    val validData = datesBetween(
+      min = LocalDate.of(2000, 1, 1),
+      max = LocalDate.now(ZoneOffset.UTC)
+    )
+
+    behave like dateField(form, "value", validData)
+
+    behave like mandatoryDateField(form, "value", "whatIsYourDOB.error.required.all")
+  }
 }

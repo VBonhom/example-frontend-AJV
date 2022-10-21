@@ -92,3 +92,13 @@ whatIsYourNINO.error.required = Enter whatIsYourNINO
 whatIsYourNINO.error.length = WhatIsYourNINO must be 13 characters or less
 whatIsYourNINO.change.hidden = WhatIsYourNINO
 
+
+whatIsYourDOB.title = WhatIsYourDOB
+whatIsYourDOB.heading = WhatIsYourDOB
+whatIsYourDOB.hint = For example, 12 11 2007
+whatIsYourDOB.checkYourAnswersLabel = WhatIsYourDOB
+whatIsYourDOB.error.required.all = Enter the whatIsYourDOB
+whatIsYourDOB.error.required.two = The whatIsYourDOB must include {0} and {1}
+whatIsYourDOB.error.required = The whatIsYourDOB must include {0}
+whatIsYourDOB.error.invalid = Enter a real WhatIsYourDOB
+whatIsYourDOB.change.hidden = WhatIsYourDOB

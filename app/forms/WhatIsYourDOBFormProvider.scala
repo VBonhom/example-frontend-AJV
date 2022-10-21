@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import org.scalacheck.Arbitrary
-import pages._
+import java.time.LocalDate
 
-trait PageGenerators {
+import forms.mappings.Mappings
+import javax.inject.Inject
+import play.api.data.Form
 
-  implicit lazy val arbitraryWhatIsYourDOBPage: Arbitrary[WhatIsYourDOBPage.type] =
-    Arbitrary(WhatIsYourDOBPage)
+class WhatIsYourDOBFormProvider @Inject() extends Mappings {
 
-  implicit lazy val arbitraryWhatIsYourNINOPage: Arbitrary[WhatIsYourNINOPage.type] =
-    Arbitrary(WhatIsYourNINOPage)
-
-  implicit lazy val arbitraryWhatIsYourNamePage: Arbitrary[WhatIsYourNamePage.type] =
-    Arbitrary(WhatIsYourNamePage)
+  def apply(): Form[LocalDate] =
+    Form(
+      "value" -> localDate(
+        invalidKey     = "whatIsYourDOB.error.invalid",
+        allRequiredKey = "whatIsYourDOB.error.required.all",
+        twoRequiredKey = "whatIsYourDOB.error.required.two",
+        requiredKey    = "whatIsYourDOB.error.required"
+      )
+    )
 }

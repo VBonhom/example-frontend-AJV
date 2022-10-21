@@ -14,19 +14,25 @@
  * limitations under the License.
  */
 
-package generators
+package pages
+
+import java.time.LocalDate
 
 import org.scalacheck.Arbitrary
-import pages._
+import pages.behaviours.PageBehaviours
 
-trait PageGenerators {
+class WhatIsYourDOBPageSpec extends PageBehaviours {
 
-  implicit lazy val arbitraryWhatIsYourDOBPage: Arbitrary[WhatIsYourDOBPage.type] =
-    Arbitrary(WhatIsYourDOBPage)
+  "WhatIsYourDOBPage" - {
 
-  implicit lazy val arbitraryWhatIsYourNINOPage: Arbitrary[WhatIsYourNINOPage.type] =
-    Arbitrary(WhatIsYourNINOPage)
+    implicit lazy val arbitraryLocalDate: Arbitrary[LocalDate] = Arbitrary {
+      datesBetween(LocalDate.of(1900, 1, 1), LocalDate.of(2100, 1, 1))
+    }
 
-  implicit lazy val arbitraryWhatIsYourNamePage: Arbitrary[WhatIsYourNamePage.type] =
-    Arbitrary(WhatIsYourNamePage)
+    beRetrievable[LocalDate](WhatIsYourDOBPage)
+
+    beSettable[LocalDate](WhatIsYourDOBPage)
+
+    beRemovable[LocalDate](WhatIsYourDOBPage)
+  }
 }
