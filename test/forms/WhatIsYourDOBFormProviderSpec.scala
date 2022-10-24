@@ -18,17 +18,16 @@ package forms
 
 import java.time.{LocalDate, ZoneOffset, ZoneId, Clock}
 import java.time.format.DateTimeFormatter
-
 import forms.behaviours.DateBehaviours
 import play.api.data.FormError
 
 class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
 
 
-  private val fixedInstant = LocalDate.now.atStartOfDay(ZoneId.systemDefault).toInstant
-  private val clock = Clock.fixed(fixedInstant, ZoneId.systemDefault)
-  private val maxDate = LocalDate.now(clock).minusYears(16)
-  private def dateFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy")
+  val fixedInstant = LocalDate.now.atStartOfDay(ZoneId.systemDefault).toInstant
+  val clock = Clock.fixed(fixedInstant, ZoneId.systemDefault)
+  val maxDate = LocalDate.now(clock).minusYears(16)
+  def dateFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 
   val form = new WhatIsYourDOBFormProvider(clock)()
 
@@ -47,7 +46,9 @@ class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
       form = form,
       key = "value",
       max = maxDate,
-      formError = FormError("Value", "whatIsYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
+      formError = FormError("value", "whatIsYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
     )
   }
 }
+
+//Minimum test required? Is ValidData test too brittle in current config.

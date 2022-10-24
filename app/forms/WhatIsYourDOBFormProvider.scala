@@ -20,8 +20,12 @@ import java.time.{LocalDate, Clock}
 import forms.mappings.Mappings
 import javax.inject.Inject
 import play.api.data.Form
+import java.time.format.DateTimeFormatter
 
 class WhatIsYourDOBFormProvider @Inject()(clock:Clock) extends Mappings {
+
+  val maxDate: LocalDate = LocalDate.now(clock).minusYears(16)
+  def dateFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 
   def apply(): Form[LocalDate] =
     Form(
@@ -30,6 +34,6 @@ class WhatIsYourDOBFormProvider @Inject()(clock:Clock) extends Mappings {
         allRequiredKey = "whatIsYourDOB.error.required.all",
         twoRequiredKey = "whatIsYourDOB.error.required.two",
         requiredKey    = "whatIsYourDOB.error.required"
-      )
+      ).verifying(maxDate(maxDate, "whatIsYourDOB.error.beforeMax", maxDate.format(dateFormatter)))
     )
 }
