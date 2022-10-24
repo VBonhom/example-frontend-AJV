@@ -47,7 +47,7 @@ class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
       form = form,
       key = "value",
       max = maxDate,
-      formError = FormError("Value", "WhatisYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
+      formError = FormError("Value", "whatisYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
     )
   }
 }
