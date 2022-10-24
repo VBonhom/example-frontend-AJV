@@ -17,12 +17,17 @@
 package forms
 
 import java.time.LocalDate
-import java.time.{LocalDate, Clock}
+import java.time.{Clock, LocalDate}
 import forms.mappings.Mappings
 import javax.inject.Inject
 import play.api.data.Form
+import java.time.format.DateTimeFormatter
 
 class WhenDidSicknessBeginFormProvider @Inject()(clock:Clock) extends Mappings {
+
+  val maxDate: LocalDate = LocalDate.now(clock)
+  val minDate: LocalDate = LocalDate.now(clock).minusYears(1)
+  def dateFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 
   def apply(): Form[LocalDate] =
     Form(
@@ -31,6 +36,9 @@ class WhenDidSicknessBeginFormProvider @Inject()(clock:Clock) extends Mappings {
         allRequiredKey = "whenDidSicknessBegin.error.required.all",
         twoRequiredKey = "whenDidSicknessBegin.error.required.two",
         requiredKey    = "whenDidSicknessBegin.error.required"
+      ).verifying(
+        minDate(minDate, "WhenDidSicknessBegin.error.beforeMin", minDate.format(dateFormatter)),
+        maxDate(maxDate, "WhenDidSicknessBegin.error.afterMax", maxDate.format(dateFormatter))
       )
     )
 }
