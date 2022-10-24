@@ -14,22 +14,23 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import org.scalacheck.Arbitrary
-import pages._
+import java.time.LocalDate
 
-trait PageGenerators {
+import forms.mappings.Mappings
+import javax.inject.Inject
+import play.api.data.Form
 
-  implicit lazy val arbitraryWhenDidSicknessBeginPage: Arbitrary[WhenDidSicknessBeginPage.type] =
-    Arbitrary(WhenDidSicknessBeginPage)
+class WhenDidSicknessBeginFormProvider @Inject() extends Mappings {
 
-  implicit lazy val arbitraryWhatIsYourDOBPage: Arbitrary[WhatIsYourDOBPage.type] =
-    Arbitrary(WhatIsYourDOBPage)
-
-  implicit lazy val arbitraryWhatIsYourNINOPage: Arbitrary[WhatIsYourNINOPage.type] =
-    Arbitrary(WhatIsYourNINOPage)
-
-  implicit lazy val arbitraryWhatIsYourNamePage: Arbitrary[WhatIsYourNamePage.type] =
-    Arbitrary(WhatIsYourNamePage)
+  def apply(): Form[LocalDate] =
+    Form(
+      "value" -> localDate(
+        invalidKey     = "whenDidSicknessBegin.error.invalid",
+        allRequiredKey = "whenDidSicknessBegin.error.required.all",
+        twoRequiredKey = "whenDidSicknessBegin.error.required.two",
+        requiredKey    = "whenDidSicknessBegin.error.required"
+      )
+    )
 }

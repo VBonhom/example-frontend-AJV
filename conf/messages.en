@@ -90,3 +90,13 @@ whatIsYourDOB.error.required = Your date of birth must include {0}
 whatIsYourDOB.error.invalid = Enter a real date of birth
 whatIsYourDOB.change.hidden = What is your date of birth?
 whatIsYourDOB.error.beforeMax = Your date of birth must be on or before {0}
+
+whenDidSicknessBegin.title = WhenDidSicknessBegin
+whenDidSicknessBegin.heading = WhenDidSicknessBegin
+whenDidSicknessBegin.hint = For example, 12 11 2007
+whenDidSicknessBegin.checkYourAnswersLabel = WhenDidSicknessBegin
+whenDidSicknessBegin.error.required.all = Enter the whenDidSicknessBegin
+whenDidSicknessBegin.error.required.two = The whenDidSicknessBegin must include {0} and {1}
+whenDidSicknessBegin.error.required = The whenDidSicknessBegin must include {0}
+whenDidSicknessBegin.error.invalid = Enter a real WhenDidSicknessBegin
+whenDidSicknessBegin.change.hidden = WhenDidSicknessBegin
