@@ -16,7 +16,7 @@
 
 package controllers
 
-import java.time.{LocalDate, ZoneOffset}
+import java.time.{LocalDate, ZoneOffset, Clock, ZoneId}
 
 import base.SpecBase
 import forms.WhatIsYourDOBFormProvider
@@ -33,11 +33,15 @@ import play.api.test.Helpers._
 import repositories.SessionRepository
 import views.html.WhatIsYourDOBView
 
+
 import scala.concurrent.Future
 
 class WhatIsYourDOBControllerSpec extends SpecBase with MockitoSugar {
 
-  val formProvider = new WhatIsYourDOBFormProvider()
+  private val fixedInstant = LocalDate.now.atStartOfDay(ZoneId.systemDefault).toInstant
+  private val clock = Clock.fixed(fixedInstant, ZoneId.systemDefault)
+
+  val formProvider = new WhatIsYourDOBFormProvider(clock)
   private def form = formProvider()
 
   def onwardRoute = Call("GET", "/foo")

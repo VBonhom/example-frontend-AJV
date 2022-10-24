@@ -16,13 +16,21 @@
 
 package forms
 
-import java.time.{LocalDate, ZoneOffset}
+import java.time.{LocalDate, ZoneOffset, ZoneId, Clock}
+import java.time.format.DateTimeFormatter
 
 import forms.behaviours.DateBehaviours
+import play.api.data.FormError
 
 class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
 
-  val form = new WhatIsYourDOBFormProvider()()
+
+  private val fixedInstant = LocalDate.now.atStartOfDay(ZoneId.systemDefault).toInstant
+  private val clock = Clock.fixed(fixedInstant, ZoneId.systemDefault)
+  private val maxDate = LocalDate.now(clock).minusYears(16)
+  private def dateFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy")
+
+  val form = new WhatIsYourDOBFormProvider(clock)()
 
   ".value" - {
 
@@ -34,5 +42,12 @@ class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
     behave like dateField(form, "value", validData)
 
     behave like mandatoryDateField(form, "value", "whatIsYourDOB.error.required.all")
+
+    behave like dateFieldWithMax(
+      form = form,
+      key = "value",
+      max = maxDate,
+      formError = FormError("Value", "WhatisYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
+    )
   }
 }
