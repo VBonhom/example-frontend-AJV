@@ -30,8 +30,7 @@ class WhatIsYourNINOFormProviderSpec extends FieldBehaviours {
 
   ".value" - {
 
-    val fieldName = "value"gi
-
+    val fieldName = "value"
     behave like fieldThatBindsValidData(
       form,
       fieldName,
