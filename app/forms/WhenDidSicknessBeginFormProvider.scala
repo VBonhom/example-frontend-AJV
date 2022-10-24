@@ -17,12 +17,12 @@
 package forms
 
 import java.time.LocalDate
-
+import java.time.{LocalDate, Clock}
 import forms.mappings.Mappings
 import javax.inject.Inject
 import play.api.data.Form
 
-class WhenDidSicknessBeginFormProvider @Inject() extends Mappings {
+class WhenDidSicknessBeginFormProvider @Inject()(clock:Clock) extends Mappings {
 
   def apply(): Form[LocalDate] =
     Form(
