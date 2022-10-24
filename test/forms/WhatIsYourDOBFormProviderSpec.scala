@@ -36,7 +36,7 @@ class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
 
     val validData = datesBetween(
       min = LocalDate.of(2000, 1, 1),
-      max = LocalDate.now(ZoneOffset.UTC)
+      max = LocalDate.now.minusYears(16)
     )
 
     behave like dateField(form, "value", validData)
@@ -47,7 +47,7 @@ class WhatIsYourDOBFormProviderSpec extends DateBehaviours {
       form = form,
       key = "value",
       max = maxDate,
-      formError = FormError("Value", "whatisYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
+      formError = FormError("Value", "whatIsYourDOB.error.beforeMax", Seq(maxDate.format(dateFormatter)))
     )
   }
 }

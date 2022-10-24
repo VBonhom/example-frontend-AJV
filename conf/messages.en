@@ -89,4 +89,4 @@ whatIsYourDOB.error.required.two = Your date of birth must include {0} and {1}
 whatIsYourDOB.error.required = Your date of birth must include {0}
 whatIsYourDOB.error.invalid = Enter a real date of birth
 whatIsYourDOB.change.hidden = What is your date of birth?
-whatisYourDOB.error.beforeMax = Your date of birth must be on or before {0}
+whatIsYourDOB.error.beforeMax = Your date of birth must be on or before {0}
