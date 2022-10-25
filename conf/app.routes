@@ -36,3 +36,8 @@ GET        /whatIsYourDOB                         controllers.WhatIsYourDOBContr
 POST       /whatIsYourDOB                         controllers.WhatIsYourDOBController.onSubmit(mode: Mode = NormalMode)
 GET        /changeWhatIsYourDOB                   controllers.WhatIsYourDOBController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeWhatIsYourDOB                   controllers.WhatIsYourDOBController.onSubmit(mode: Mode = CheckMode)
+
+GET        /whenDidSicknessBegin                  controllers.WhenDidSicknessBeginController.onPageLoad(mode: Mode = NormalMode)
+POST       /whenDidSicknessBegin                  controllers.WhenDidSicknessBeginController.onSubmit(mode: Mode = NormalMode)
+GET        /changeWhenDidSicknessBegin                        controllers.WhenDidSicknessBeginController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeWhenDidSicknessBegin                        controllers.WhenDidSicknessBeginController.onSubmit(mode: Mode = CheckMode)

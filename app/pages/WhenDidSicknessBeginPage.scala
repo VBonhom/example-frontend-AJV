@@ -14,22 +14,15 @@
  * limitations under the License.
  */
 
-package generators
+package pages
 
-import org.scalacheck.Arbitrary
-import pages._
+import java.time.LocalDate
 
-trait PageGenerators {
+import play.api.libs.json.JsPath
 
-  implicit lazy val arbitraryWhenDidSicknessBeginPage: Arbitrary[WhenDidSicknessBeginPage.type] =
-    Arbitrary(WhenDidSicknessBeginPage)
+case object WhenDidSicknessBeginPage extends QuestionPage[LocalDate] {
 
-  implicit lazy val arbitraryWhatIsYourDOBPage: Arbitrary[WhatIsYourDOBPage.type] =
-    Arbitrary(WhatIsYourDOBPage)
+  override def path: JsPath = JsPath \ toString
 
-  implicit lazy val arbitraryWhatIsYourNINOPage: Arbitrary[WhatIsYourNINOPage.type] =
-    Arbitrary(WhatIsYourNINOPage)
-
-  implicit lazy val arbitraryWhatIsYourNamePage: Arbitrary[WhatIsYourNamePage.type] =
-    Arbitrary(WhatIsYourNamePage)
+  override def toString: String = "whenDidSicknessBegin"
 }
