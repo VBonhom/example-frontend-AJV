@@ -37,8 +37,8 @@ class WhenDidSicknessBeginFormProvider @Inject()(clock:Clock) extends Mappings {
         twoRequiredKey = "whenDidSicknessBegin.error.required.two",
         requiredKey    = "whenDidSicknessBegin.error.required"
       ).verifying(
-        minDate(minDate, "WhenDidSicknessBegin.error.beforeMin", minDate.format(dateFormatter)),
-        maxDate(maxDate, "WhenDidSicknessBegin.error.afterMax", maxDate.format(dateFormatter))
+        minDate(minDate, "whenDidSicknessBegin.error.beforeMin", minDate.format(dateFormatter)),
+        maxDate(maxDate, "whenDidSicknessBegin.error.afterMax", maxDate.format(dateFormatter))
       )
     )
 }

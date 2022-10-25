@@ -49,14 +49,14 @@ class WhenDidSicknessBeginFormProviderSpec extends DateBehaviours {
       form = form,
       key = "value",
       min = minDate,
-      formError = FormError("value", "WhenDidSicknessBegin.error.beforeMin", Seq(minDate.format(dateFormatter)))
+      formError = FormError("value", "whenDidSicknessBegin.error.beforeMin", Seq(minDate.format(dateFormatter)))
     )
 
     behave like dateFieldWithMax(
       form = form,
       key = "value",
       max = maxDate,
-      formError = FormError("value", "WhenDidSicknessBegin.error.afterMax", Seq(maxDate.format(dateFormatter)))
+      formError = FormError("value", "whenDidSicknessBegin.error.afterMax", Seq(maxDate.format(dateFormatter)))
     )
   }
 }
