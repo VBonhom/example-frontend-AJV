@@ -102,3 +102,9 @@ whenDidSicknessBegin.error.invalid = Enter a real date
 whenDidSicknessBegin.change.hidden = When did your sickness begin?
 whenDidSicknessBegin.error.afterMax = Date must be on or before {0}
 whenDidSicknessBegin.error.beforeMin = Date must be within the last year
+
+hasYourSicknessEnded.title = Has your sickness ended?
+hasYourSicknessEnded.heading = Has your sickness ended?
+hasYourSicknessEnded.checkYourAnswersLabel = Has your sickness ended?
+hasYourSicknessEnded.error.required = Select yes if your sickness has ended
+hasYourSicknessEnded.change.hidden = Has your sickness ended?
