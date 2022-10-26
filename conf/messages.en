@@ -102,3 +102,10 @@ whenDidSicknessBegin.error.invalid = Enter a real date
 whenDidSicknessBegin.change.hidden = When did your sickness begin?
 whenDidSicknessBegin.error.afterMax = Date must be on or before {0}
 whenDidSicknessBegin.error.beforeMin = Date must be within the last year
+
+sicknessDetails.title = Enter brief details of your sickness
+sicknessDetails.heading = Enter brief details of your sickness
+sicknessDetails.checkYourAnswersLabel = Sickness Details
+sicknessDetails.error.required = Enter brief details of your sickness
+sicknessDetails.error.length = Sickness details must be 250 characters or less
+sicknessDetails.change.hidden = the details of your sickness
