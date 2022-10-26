@@ -109,3 +109,9 @@ sicknessDetails.checkYourAnswersLabel = Sickness Details
 sicknessDetails.error.required = Enter brief details of your sickness
 sicknessDetails.error.length = Sickness details must be 250 characters or less
 sicknessDetails.change.hidden = the details of your sickness
+
+hasYourSicknessEnded.title = Has your sickness ended?
+hasYourSicknessEnded.heading = Has your sickness ended?
+hasYourSicknessEnded.checkYourAnswersLabel = Has your sickness ended?
+hasYourSicknessEnded.error.required = Select yes if your sickness has ended
+hasYourSicknessEnded.change.hidden = Has your sickness ended?

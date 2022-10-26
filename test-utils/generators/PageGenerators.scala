@@ -24,6 +24,9 @@ trait PageGenerators {
   implicit lazy val arbitrarySicknessDetailsPage: Arbitrary[SicknessDetailsPage.type] =
     Arbitrary(SicknessDetailsPage)
 
+  implicit lazy val arbitraryHasYourSicknessEndedPage: Arbitrary[HasYourSicknessEndedPage.type] =
+    Arbitrary(HasYourSicknessEndedPage)
+
   implicit lazy val arbitraryWhenDidSicknessBeginPage: Arbitrary[WhenDidSicknessBeginPage.type] =
     Arbitrary(WhenDidSicknessBeginPage)
 
