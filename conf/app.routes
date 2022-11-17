@@ -51,3 +51,13 @@ GET        /hasYourSicknessEnded                        controllers.HasYourSickn
 POST       /hasYourSicknessEnded                        controllers.HasYourSicknessEndedController.onSubmit(mode: Mode = NormalMode)
 GET        /changeHasYourSicknessEnded                  controllers.HasYourSicknessEndedController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeHasYourSicknessEnded                  controllers.HasYourSicknessEndedController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knowClockOrPayrollNumber                        controllers.KnowClockOrPayrollNumberController.onPageLoad(mode: Mode = NormalMode)
+POST       /knowClockOrPayrollNumber                        controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = CheckMode)
+
+GET        /knowClockOrPayrollNumber                        controllers.KnowClockOrPayrollNumberController.onPageLoad(mode: Mode = NormalMode)
+POST       /knowClockOrPayrollNumber                        controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = NormalMode)
+GET        /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = CheckMode)

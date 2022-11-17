@@ -115,3 +115,9 @@ hasYourSicknessEnded.heading = Has your sickness ended?
 hasYourSicknessEnded.checkYourAnswersLabel = Has your sickness ended?
 hasYourSicknessEnded.error.required = Select yes if your sickness has ended
 hasYourSicknessEnded.change.hidden = Has your sickness ended?
+
+knowClockOrPayrollNumber.title = Do You Know Your Clock Or Payroll Number?
+knowClockOrPayrollNumber.heading = Do You Know Your Clock Or Payroll Number?
+knowClockOrPayrollNumber.checkYourAnswersLabel = Do You Know Your Clock Or Payroll Number?
+knowClockOrPayrollNumber.error.required = Select yes if you know your Clock or Payroll Number
+knowClockOrPayrollNumber.change.hidden = Do You Know Your Clock Or Payroll Number?
