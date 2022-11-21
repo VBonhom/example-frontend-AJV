@@ -29,15 +29,17 @@ class Navigator @Inject()() {
   private val normalRoutes: Page => UserAnswers => Call = {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(NormalMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(NormalMode)
+    case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
     case _ => _ => routes.IndexController.onPageLoad
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(CheckMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(CheckMode)
+    case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
-  
+
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
     case NormalMode =>
       normalRoutes(page)(userAnswers)

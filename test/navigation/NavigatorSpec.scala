@@ -44,7 +44,7 @@ class NavigatorSpec extends SpecBase {
       }
 
       "must go from what is your DOB to do you know your clock or payroll number" in {
-        navigator.nextPage(WhatIsYourNINOPage, NormalMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
+        navigator.nextPage(WhatIsYourDOBPage, NormalMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
       }
     }
 
@@ -65,7 +65,7 @@ class NavigatorSpec extends SpecBase {
       }
 
       "must go from what is your DOB to do you know your clock or payroll number" in {
-        navigator.nextPage(WhatIsYourNINOPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
+        navigator.nextPage(WhatIsYourDOBPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
       }
     }
   }
