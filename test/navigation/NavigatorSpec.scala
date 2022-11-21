@@ -34,6 +34,10 @@ class NavigatorSpec extends SpecBase {
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, NormalMode, UserAnswers("id")) mustBe routes.IndexController.onPageLoad
       }
+
+      "must go from what is your name page to what is your NINO page" in {
+        navigator.nextPage(WhatIsYourNamePage, NormalMode, UserAnswers("id")) mustBe routes.WhatIsYourNINOController.onPageLoad(NormalMode)
+      }
     }
 
     "in Check mode" - {
@@ -42,6 +46,9 @@ class NavigatorSpec extends SpecBase {
 
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, CheckMode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
+      "must go from what is your name page to what is your NINO page" in {
+        navigator.nextPage(WhatIsYourNamePage, CheckMode, UserAnswers("id")) mustBe routes.WhatIsYourNINOController.onPageLoad(CheckMode)
       }
     }
   }
