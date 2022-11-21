@@ -39,8 +39,12 @@ class NavigatorSpec extends SpecBase {
         navigator.nextPage(WhatIsYourNamePage, NormalMode, UserAnswers("id")) mustBe routes.WhatIsYourNINOController.onPageLoad(NormalMode)
       }
 
-      "must got from what is your NINO to what is your DOB" in {
+      "must go from what is your NINO to what is your DOB" in {
         navigator.nextPage(WhatIsYourNINOPage, NormalMode, UserAnswers("id")) mustBe routes.WhatIsYourDOBController.onPageLoad(NormalMode)
+      }
+
+      "must go from what is your DOB to do you know your clock or payroll number" in {
+        navigator.nextPage(WhatIsYourNINOPage, NormalMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
       }
     }
 
@@ -58,6 +62,10 @@ class NavigatorSpec extends SpecBase {
 
       "must got from what is your NINO to what is your DOB" in {
         navigator.nextPage(WhatIsYourNINOPage, CheckMode, UserAnswers("id")) mustBe routes.WhatIsYourDOBController.onPageLoad(CheckMode)
+      }
+
+      "must go from what is your DOB to do you know your clock or payroll number" in {
+        navigator.nextPage(WhatIsYourNINOPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
       }
     }
   }
