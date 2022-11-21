@@ -27,10 +27,12 @@ import models._
 class Navigator @Inject()() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
+    case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(NormalMode)
     case _ => _ => routes.IndexController.onPageLoad
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
+    case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(CheckMode)
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
