@@ -34,6 +34,18 @@ class NavigatorSpec extends SpecBase {
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, NormalMode, UserAnswers("id")) mustBe routes.IndexController.onPageLoad
       }
+
+      "must go from what is your name page to what is your NINO page" in {
+        navigator.nextPage(WhatIsYourNamePage, NormalMode, UserAnswers("id")) mustBe routes.WhatIsYourNINOController.onPageLoad(NormalMode)
+      }
+
+      "must go from what is your NINO to what is your DOB" in {
+        navigator.nextPage(WhatIsYourNINOPage, NormalMode, UserAnswers("id")) mustBe routes.WhatIsYourDOBController.onPageLoad(NormalMode)
+      }
+
+      "must go from what is your DOB to do you know your clock or payroll number" in {
+        navigator.nextPage(WhatIsYourDOBPage, NormalMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
+      }
     }
 
     "in Check mode" - {
@@ -42,6 +54,18 @@ class NavigatorSpec extends SpecBase {
 
         case object UnknownPage extends Page
         navigator.nextPage(UnknownPage, CheckMode, UserAnswers("id")) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
+
+      "must go from what is your name page to what is your NINO page" in {
+        navigator.nextPage(WhatIsYourNamePage, CheckMode, UserAnswers("id")) mustBe routes.WhatIsYourNINOController.onPageLoad(CheckMode)
+      }
+
+      "must got from what is your NINO to what is your DOB" in {
+        navigator.nextPage(WhatIsYourNINOPage, CheckMode, UserAnswers("id")) mustBe routes.WhatIsYourDOBController.onPageLoad(CheckMode)
+      }
+
+      "must go from what is your DOB to do you know your clock or payroll number" in {
+        navigator.nextPage(WhatIsYourDOBPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
       }
     }
   }
