@@ -61,3 +61,8 @@ GET        /knowClockOrPayrollNumber                        controllers.KnowCloc
 POST       /knowClockOrPayrollNumber                        controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = NormalMode)
 GET        /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onPageLoad(mode: Mode = CheckMode)
 POST       /changeKnowClockOrPayrollNumber                  controllers.KnowClockOrPayrollNumberController.onSubmit(mode: Mode = CheckMode)
+
+GET        /whatIsYourClockOrPayrollNumber                        controllers.WhatIsYourClockOrPayrollNumberController.onPageLoad(mode: Mode = NormalMode)
+POST       /whatIsYourClockOrPayrollNumber                        controllers.WhatIsYourClockOrPayrollNumberController.onSubmit(mode: Mode = NormalMode)
+GET        /changeWhatIsYourClockOrPayrollNumber                  controllers.WhatIsYourClockOrPayrollNumberController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeWhatIsYourClockOrPayrollNumber                  controllers.WhatIsYourClockOrPayrollNumberController.onSubmit(mode: Mode = CheckMode)

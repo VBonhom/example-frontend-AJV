@@ -1,43 +1,43 @@
 package controllers
 
 import base.SpecBase
-import forms.KnowClockOrPayrollNumberFormProvider
+import forms.WhatIsYourClockOrPayrollNumberFormProvider
 import models.{NormalMode, UserAnswers}
 import navigation.{FakeNavigator, Navigator}
 import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.when
 import org.scalatestplus.mockito.MockitoSugar
-import pages.KnowClockOrPayrollNumberPage
+import pages.WhatIsYourClockOrPayrollNumberPage
 import play.api.inject.bind
 import play.api.mvc.Call
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import repositories.SessionRepository
-import views.html.KnowClockOrPayrollNumberView
+import views.html.WhatIsYourClockOrPayrollNumberView
 
 import scala.concurrent.Future
 
-class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar {
+class WhatIsYourClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar {
 
   def onwardRoute = Call("GET", "/foo")
 
-  val formProvider = new KnowClockOrPayrollNumberFormProvider()
+  val formProvider = new WhatIsYourClockOrPayrollNumberFormProvider()
   val form = formProvider()
 
-  lazy val knowClockOrPayrollNumberRoute = routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode).url
+  lazy val whatIsYourClockOrPayrollNumberRoute = routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(NormalMode).url
 
-  "KnowClockOrPayrollNumber Controller" - {
+  "WhatIsYourClockOrPayrollNumber Controller" - {
 
     "must return OK and the correct view for a GET" in {
 
       val application = applicationBuilder(userAnswers = Some(emptyUserAnswers)).build()
 
       running(application) {
-        val request = FakeRequest(GET, knowClockOrPayrollNumberRoute)
+        val request = FakeRequest(GET, whatIsYourClockOrPayrollNumberRoute)
 
         val result = route(application, request).value
 
-        val view = application.injector.instanceOf[KnowClockOrPayrollNumberView]
+        val view = application.injector.instanceOf[WhatIsYourClockOrPayrollNumberView]
 
         status(result) mustEqual OK
         contentAsString(result) mustEqual view(form, NormalMode)(request, messages(application)).toString
@@ -46,19 +46,19 @@ class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar 
 
     "must populate the view correctly on a GET when the question has previously been answered" in {
 
-      val userAnswers = UserAnswers(userAnswersId).set(KnowClockOrPayrollNumberPage, true).success.value
+      val userAnswers = UserAnswers(userAnswersId).set(WhatIsYourClockOrPayrollNumberPage, "answer").success.value
 
       val application = applicationBuilder(userAnswers = Some(userAnswers)).build()
 
       running(application) {
-        val request = FakeRequest(GET, knowClockOrPayrollNumberRoute)
+        val request = FakeRequest(GET, whatIsYourClockOrPayrollNumberRoute)
 
-        val view = application.injector.instanceOf[KnowClockOrPayrollNumberView]
+        val view = application.injector.instanceOf[WhatIsYourClockOrPayrollNumberView]
 
         val result = route(application, request).value
 
         status(result) mustEqual OK
-        contentAsString(result) mustEqual view(form.fill(true), NormalMode)(request, messages(application)).toString
+        contentAsString(result) mustEqual view(form.fill("answer"), NormalMode)(request, messages(application)).toString
       }
     }
 
@@ -78,8 +78,8 @@ class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar 
 
       running(application) {
         val request =
-          FakeRequest(POST, knowClockOrPayrollNumberRoute)
-            .withFormUrlEncodedBody(("value", "true"))
+          FakeRequest(POST, whatIsYourClockOrPayrollNumberRoute)
+            .withFormUrlEncodedBody(("value", "answer"))
 
         val result = route(application, request).value
 
@@ -94,12 +94,12 @@ class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar 
 
       running(application) {
         val request =
-          FakeRequest(POST, knowClockOrPayrollNumberRoute)
+          FakeRequest(POST, whatIsYourClockOrPayrollNumberRoute)
             .withFormUrlEncodedBody(("value", ""))
 
         val boundForm = form.bind(Map("value" -> ""))
 
-        val view = application.injector.instanceOf[KnowClockOrPayrollNumberView]
+        val view = application.injector.instanceOf[WhatIsYourClockOrPayrollNumberView]
 
         val result = route(application, request).value
 
@@ -113,7 +113,7 @@ class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar 
       val application = applicationBuilder(userAnswers = None).build()
 
       running(application) {
-        val request = FakeRequest(GET, knowClockOrPayrollNumberRoute)
+        val request = FakeRequest(GET, whatIsYourClockOrPayrollNumberRoute)
 
         val result = route(application, request).value
 
@@ -128,8 +128,8 @@ class KnowClockOrPayrollNumberControllerSpec extends SpecBase with MockitoSugar 
 
       running(application) {
         val request =
-          FakeRequest(POST, knowClockOrPayrollNumberRoute)
-            .withFormUrlEncodedBody(("value", "true"))
+          FakeRequest(POST, whatIsYourClockOrPayrollNumberRoute)
+            .withFormUrlEncodedBody(("value", "answer"))
 
         val result = route(application, request).value
 
