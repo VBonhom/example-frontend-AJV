@@ -39,7 +39,7 @@ class Navigator @Inject()() {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(CheckMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(CheckMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
-    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberRoutes
+    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberCheckRoutes
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
@@ -49,6 +49,11 @@ class Navigator @Inject()() {
       case false => routes.SicknessDetailsController.onPageLoad(NormalMode)
     }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
 
+  private def KowClockOrPayrollNumberCheckRoutes(answers: UserAnswers): Call =
+    answers.get(KnowClockOrPayrollNumberPage).map {
+      case true => routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(CheckMode)
+      case false => routes.SicknessDetailsController.onPageLoad(CheckMode)
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
     case NormalMode =>
       normalRoutes(page)(userAnswers)
