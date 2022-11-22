@@ -31,7 +31,7 @@ class Navigator @Inject()() {
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
     case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberRoutes
     case WhatIsYourClockOrPayrollNumberPage => _ => routes.SicknessDetailsController.onPageLoad(NormalMode)
-
+    case SicknessDetailsPage => _ => routes.WhenDidSicknessBeginController.onPageLoad(NormalMode)
     case _ => _ => routes.IndexController.onPageLoad
   }
 
@@ -40,6 +40,7 @@ class Navigator @Inject()() {
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(CheckMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
     case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberCheckRoutes
+    case SicknessDetailsPage => _ => routes.WhenDidSicknessBeginController.onPageLoad(CheckMode)
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
