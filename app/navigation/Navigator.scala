@@ -19,7 +19,7 @@ package navigation
 import javax.inject.{Inject, Singleton}
 import play.api.mvc.Call
 import controllers.routes
-import pages._
+import pages.{DoYouKnowYourClockOrPayrollNumberPage, _}
 import models._
 
 @Singleton
@@ -29,8 +29,9 @@ class Navigator @Inject()() {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(NormalMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(NormalMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
-    case KnowClockOrPayrollNumberPage => KowYourClockOrPayrollNumberRoutes
+    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberRoutes
     case WhatIsYourClockOrPayrollNumberPage => _ => routes.SicknessDetailsController.onPageLoad(NormalMode)
+
     case _ => _ => routes.IndexController.onPageLoad
   }
 
@@ -38,10 +39,11 @@ class Navigator @Inject()() {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(CheckMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(CheckMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
+    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberRoutes
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
-  private def KowYourClockOrPayrollNumberRoutes(answers: UserAnswers): Call =
+  private def KowClockOrPayrollNumberRoutes(answers: UserAnswers): Call =
     answers.get(KnowClockOrPayrollNumberPage).map {
       case true => routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(NormalMode)
       case false => routes.SicknessDetailsController.onPageLoad(NormalMode)
