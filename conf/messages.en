@@ -121,3 +121,10 @@ knowClockOrPayrollNumber.heading = Do You Know Your Clock Or Payroll Number?
 knowClockOrPayrollNumber.checkYourAnswersLabel = Do You Know Your Clock Or Payroll Number?
 knowClockOrPayrollNumber.error.required = Select yes if you know your Clock or Payroll Number
 knowClockOrPayrollNumber.change.hidden = Do You Know Your Clock Or Payroll Number?
+
+whatIsYourClockOrPayrollNumber.title = What is your clock or payroll number?
+whatIsYourClockOrPayrollNumber.heading = What is your clock or payroll number?
+whatIsYourClockOrPayrollNumber.checkYourAnswersLabel = What is your clock or payroll number?
+whatIsYourClockOrPayrollNumber.error.required = Enter your clock or payroll number.
+whatIsYourClockOrPayrollNumber.error.length = Your clock or payroll number must be 100 characters or less.
+whatIsYourClockOrPayrollNumber.change.hidden = your clock or payroll number.
