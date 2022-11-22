@@ -67,6 +67,26 @@ class NavigatorSpec extends SpecBase {
       "must go from what is your DOB to do you know your clock or payroll number" in {
         navigator.nextPage(WhatIsYourDOBPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
       }
+
+      "must go from the do you know your clock or payroll page" - {
+
+        "to the what is your clock or payroll number page if the user selects yes" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, true).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, answers) mustBe routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(NormalMode)
+        }
+        "to the enter your sickness details page if the user selects no" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, false).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, answers) mustBe routes.SicknessDetailsController.onPageLoad(NormalMode)
+        }
+
+        "to the journey recovery page when the user has no answer" in {
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, emptyUserAnswers) mustBe routes.JourneyRecoveryController.onPageLoad()
+        }
+      }
+
+      "must go from the what is your clock or payroll number to the check your answers page" in {
+        navigator.nextPage(WhatIsYourClockOrPayrollNumberPage, NormalMode, emptyUserAnswers) mustBe routes.CheckYourAnswersController.onPageLoad
+      }
     }
   }
 }
