@@ -46,6 +46,27 @@ class NavigatorSpec extends SpecBase {
       "must go from what is your DOB to do you know your clock or payroll number" in {
         navigator.nextPage(WhatIsYourDOBPage, NormalMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
       }
+
+      "must go from the do you know your clock or payroll page" - {
+
+        "to the what is your clock or payroll number page if the user selects yes" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, true).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, answers) mustBe routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(NormalMode)
+        }
+        "to the enter your sickness details page if the user selects no" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, false).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, answers) mustBe routes.SicknessDetailsController.onPageLoad(NormalMode)
+        }
+
+        "to the journey recovery page when the user has no answer" in {
+          navigator.nextPage(KnowClockOrPayrollNumberPage, NormalMode, emptyUserAnswers) mustBe routes.JourneyRecoveryController.onPageLoad()
+        }
+
+      }
+
+      "must go from Sickness details page to when did sickness begin page" in {
+        navigator.nextPage(SicknessDetailsPage, NormalMode, UserAnswers("id")) mustBe routes.WhenDidSicknessBeginController.onPageLoad(NormalMode)
+      }
     }
 
     "in Check mode" - {
@@ -66,6 +87,27 @@ class NavigatorSpec extends SpecBase {
 
       "must go from what is your DOB to do you know your clock or payroll number" in {
         navigator.nextPage(WhatIsYourDOBPage, CheckMode, UserAnswers("id")) mustBe routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
+      }
+
+      "must go from the do you know your clock or payroll page" - {
+
+        "to the what is your clock or payroll number page if the user selects yes" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, true).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, CheckMode, answers) mustBe routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(CheckMode)
+        }
+        "to the enter your sickness details page if the user selects no" in {
+          val answers = emptyUserAnswers.set(KnowClockOrPayrollNumberPage, false).success.value
+          navigator.nextPage(KnowClockOrPayrollNumberPage, CheckMode, answers) mustBe routes.SicknessDetailsController.onPageLoad(CheckMode)
+        }
+
+        "to the journey recovery page when the user has no answer" in {
+          navigator.nextPage(KnowClockOrPayrollNumberPage, CheckMode, emptyUserAnswers) mustBe routes.JourneyRecoveryController.onPageLoad()
+        }
+
+      }
+
+      "must go from Sickness details page to when did sickness begin page" in {
+        navigator.nextPage(SicknessDetailsPage, CheckMode, UserAnswers("id")) mustBe routes.WhenDidSicknessBeginController.onPageLoad(CheckMode)
       }
     }
   }

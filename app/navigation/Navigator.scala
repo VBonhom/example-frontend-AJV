@@ -17,7 +17,6 @@
 package navigation
 
 import javax.inject.{Inject, Singleton}
-
 import play.api.mvc.Call
 import controllers.routes
 import pages._
@@ -30,6 +29,9 @@ class Navigator @Inject()() {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(NormalMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(NormalMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(NormalMode)
+    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberRoutes
+    case WhatIsYourClockOrPayrollNumberPage => _ => routes.SicknessDetailsController.onPageLoad(NormalMode)
+    case SicknessDetailsPage => _ => routes.WhenDidSicknessBeginController.onPageLoad(NormalMode)
     case _ => _ => routes.IndexController.onPageLoad
   }
 
@@ -37,9 +39,22 @@ class Navigator @Inject()() {
     case WhatIsYourNamePage => _ => routes.WhatIsYourNINOController.onPageLoad(CheckMode)
     case WhatIsYourNINOPage => _ => routes.WhatIsYourDOBController.onPageLoad(CheckMode)
     case WhatIsYourDOBPage => _ => routes.KnowClockOrPayrollNumberController.onPageLoad(CheckMode)
+    case KnowClockOrPayrollNumberPage => KowClockOrPayrollNumberCheckRoutes
+    case SicknessDetailsPage => _ => routes.WhenDidSicknessBeginController.onPageLoad(CheckMode)
     case _ => _ => routes.CheckYourAnswersController.onPageLoad
   }
 
+  private def KowClockOrPayrollNumberRoutes(answers: UserAnswers): Call =
+    answers.get(KnowClockOrPayrollNumberPage).map {
+      case true => routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(NormalMode)
+      case false => routes.SicknessDetailsController.onPageLoad(NormalMode)
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
+
+  private def KowClockOrPayrollNumberCheckRoutes(answers: UserAnswers): Call =
+    answers.get(KnowClockOrPayrollNumberPage).map {
+      case true => routes.WhatIsYourClockOrPayrollNumberController.onPageLoad(CheckMode)
+      case false => routes.SicknessDetailsController.onPageLoad(CheckMode)
+    }.getOrElse(routes.JourneyRecoveryController.onPageLoad())
   def nextPage(page: Page, mode: Mode, userAnswers: UserAnswers): Call = mode match {
     case NormalMode =>
       normalRoutes(page)(userAnswers)
